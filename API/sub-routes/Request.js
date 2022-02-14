@@ -18,7 +18,7 @@ module.exports = function(app){
         var UrlObj = URL.parse(urlString);
         const options = {
           host: UrlObj.host,
-          port: UrlObj.port,
+          port: 80, //UrlObj.port,
           path: UrlObj.path,
           method: AdditionalInfo.Method,
           headers: Headers
