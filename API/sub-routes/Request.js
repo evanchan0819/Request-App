@@ -15,6 +15,7 @@ module.exports = function(app){
         var urlString = Request.RequestUrl
         var AdditionalInfo = Request.AdditionalInfo
         var Headers = Request.Headers
+        var RequestId = Request.RequestId
         var UrlObj = URL.parse(urlString);
         const options = {
           host: UrlObj.host,
@@ -29,7 +30,8 @@ module.exports = function(app){
             "headers":header,
             "statusCode":statusCode,
             "statusMessage":statusMessage,
-            "body":result
+            "body":result,
+            "RequestId":RequestId
           };
           toReturn.push(RequestCallback);
           Done = Done + 1
