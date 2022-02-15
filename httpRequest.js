@@ -20,7 +20,7 @@ function testJSON(text){
     }
 }
 
-module.exports.getJSON = (options, onResult,additionalInfo) => {
+module.exports.getJSON = (options, onResult,additionalInfo,BodyData) => {
   const port = options.port == 443 ? https : http;
 
   let output = '';
@@ -49,11 +49,9 @@ module.exports.getJSON = (options, onResult,additionalInfo) => {
     // res.send('error: ' + err.message);
   });
 
-  try {
-   req.write(additionalInfo.Body);
-  } catch (error) {
-    
-  }
+    if (BodyData) {
+        req.write(BodyData);
+    }
   
   req.end();
 };
