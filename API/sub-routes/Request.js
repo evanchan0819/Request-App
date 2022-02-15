@@ -16,6 +16,12 @@ module.exports = function(app){
         var AdditionalInfo = Request.AdditionalInfo
         var Headers = Request.Headers
         var RequestId = Request.RequestId
+        var BodyData = null
+        try {
+            BodyData = JSON.stringify(AdditionalInfo.Body)
+        } catch (error) {
+            BodyData = AdditionalInfo.Body
+        }
         var UrlObj = URL.parse(urlString);
         const options = {
           host: UrlObj.host,
@@ -37,7 +43,12 @@ module.exports = function(app){
           Done = Done + 1
           DoneSomething()
         }
-        httpRequest.getJSON(options,Callback,AdditionalInfo)
+        if (BodyData) {
+            BodyData = BodyData
+        } else {
+            BodyData = null
+        }
+        httpRequest.getJSON(options,Callback,AdditionalInfo,BodyData)
       }
       req.body.Requests.forEach(forEachRequest)
     });
