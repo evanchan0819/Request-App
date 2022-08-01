@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 })
 
 app.get("/", (request, response) => {
-  response.send("Welcome to Evan's Mass Request App!");
+  response.send("Welcome to The Robloxian Game Studios' Roblox Request Proxy!");
 });
 
 // Require the API Routes.
